@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.juxiz.readinglist.entity.Book;
 
-public interface ReadingListRepository extends JpaRepository<Book,Long>{
+public interface ReaderRepository extends JpaRepository<Book,Long>{
 	List<Book> findByReader(String reader);
 }
