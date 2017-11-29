@@ -15,6 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
+
 jar {
 	baseName = 'readingList'
 	version = '0.0.1-SNAPSHOT'
