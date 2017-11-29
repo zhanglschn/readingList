@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.juxiz.readinglist.entity.Book;
-import com.juxiz.readinglist.repository.ReaderRepository;
+import com.juxiz.readinglist.repository.ReadingListRepository;
 
 @Controller
 @RequestMapping("/")
-public class ReaderController {
-	private ReaderRepository readerRepository;
+public class ReadingListController {
+	private ReadingListRepository readingListRepository;
 	
 	@Autowired
-	public ReaderController (ReaderRepository readerRepository){
-		this.readerRepository = readerRepository;
+	public ReadingListController (ReadingListRepository readingListRepository){
+		this.readingListRepository = readingListRepository;
 	}
 	
 	@RequestMapping(value="/{reader}",method=RequestMethod.GET)
 	public String readersBooks(@PathVariable("reader") String reader,Model model) {
-		List<Book> readingList = readerRepository.findByReader(reader);
+		List<Book> readingList = readingListRepository.findByReader(reader);
 		if (readingList != null && !readingList.isEmpty() && readingList.size() > 0) {
 			model.addAttribute("books",readingList);
 		} 
@@ -34,7 +34,7 @@ public class ReaderController {
 	@RequestMapping(value="/{reader}", method=RequestMethod.POST)
 	public String addToReadingList(@PathVariable("reader") String reader,Book book) {
 		book.setReader(reader);
-		readerRepository.save(book);
+		readingListRepository.save(book);
 		return "redirect:/{reader}";
 	}
 }
