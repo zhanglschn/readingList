@@ -20,13 +20,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		
-		//要求登陆者有READER角色
+		//瑕佹眰鐧婚檰鑰呮湁READER瑙掕壊
 		.antMatchers("/").access("hasRole('READER')")
 		.antMatchers("/**").permitAll()
 		
 		.and()
 		
-		// 设置登录表单的路径和错误信息
+		// 璁剧疆鐧诲綍琛ㄥ崟鐨勮矾寰勫拰閿欒淇℃伅
 		.formLogin().loginPage("/login")
 		.failureUrl("/login?error=true");
 	}

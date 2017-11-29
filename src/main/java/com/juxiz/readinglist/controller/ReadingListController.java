@@ -14,7 +14,10 @@ import com.juxiz.readinglist.repository.ReadingListRepository;
 
 @Controller
 @RequestMapping("/")
+//@ConfigurationProperties(prefix="amazon")
 public class ReadingListController {
+//	private String associateId;
+	
 	private ReadingListRepository readingListRepository;
 	
 	@Autowired
@@ -22,11 +25,16 @@ public class ReadingListController {
 		this.readingListRepository = readingListRepository;
 	}
 	
+//	public void setAssociateId(String associateId) {
+//		this.associateId = associateId;
+//	}
+	
 	@RequestMapping(value="/{reader}",method=RequestMethod.GET)
 	public String readersBooks(@PathVariable("reader") String reader,Model model) {
 		List<Book> readingList = readingListRepository.findByReader(reader);
 		if (readingList != null && !readingList.isEmpty() && readingList.size() > 0) {
 			model.addAttribute("books",readingList);
+//			model.addAttribute("amazonID",associateId);
 		} 
 		return "readingList";
 	}

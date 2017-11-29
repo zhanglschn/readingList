@@ -8,7 +8,10 @@
 	<div th:unless="${#lists.isEmpty(books)}">
 		<dl th:each="book : ${books}">
 			<dt class="bootHeadline">
-				<span th:text="${book.title}">Title</span> by 
+<!-- 				<span><a th:href="'http://www.amazon.com/gp/product/'  -->
+<!-- 				+ ${book.isbn}  -->
+<!-- 				+ '/tag=' + ${amazonID}"  -->
+<!-- 				th:text="${book.title}"></a>Title</span> by  -->
 				<span th:text="${book.author}">Author</span> 
 				(ISBN : <span th:text="${book.isbn}">ISBN</span>)
 			</dt>

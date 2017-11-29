@@ -17,7 +17,7 @@ public class Reader implements UserDetails{
 	private String username;
 	private String fullname;
 	private String password;
-	
+
 	@Override
 	public String getUsername() {
 		return username;
@@ -46,30 +46,30 @@ public class Reader implements UserDetails{
 	
 	// UserDetails methods
 	
-	//»ñÈ¡È¨ÏŞ-ÊÚÓèREADERÈ¨ÏŞ
+	//è·å–æƒé™-æˆäºˆREADERæƒé™
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Arrays.asList(new SimpleGrantedAuthority("READER"));
 	}
 	
-	//ÕË»§ÊÇ·ñ²»¹ıÆÚ
+	//è´¦æˆ·æ˜¯å¦ä¸è¿‡æœŸ
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 	
-	//ÕË»§ÊÇ·ñ²»¼ÓËø
+	//è´¦æˆ·æ˜¯å¦ä¸åŠ é”
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
-	//Æ¾Ö¤ÊÇ·ñ²»¹ıÆÚ
+	//å‡­è¯æ˜¯å¦ä¸è¿‡æœŸ
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-	//ÊÇ·ñÆôÓÃ
+	//æ˜¯å¦å¯ç”¨
 	@Override
 	public boolean isEnabled() {
 		return true;
