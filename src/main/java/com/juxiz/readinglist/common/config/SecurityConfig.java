@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(new UserDetailsService() {
 			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-				return null;
+				return readerRepository.findOne(username);
 			}
 		});
 	}
