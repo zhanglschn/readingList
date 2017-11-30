@@ -3,6 +3,7 @@ package com.juxiz.readinglist.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,9 @@ import com.juxiz.readinglist.repository.ReadingListRepository;
 
 @Controller
 @RequestMapping("/")
-//@ConfigurationProperties(prefix="amazon")
+@ConfigurationProperties(prefix="amazon")
 public class ReadingListController {
-//	private String associateId;
+	private String associateId;
 	
 	private ReadingListRepository readingListRepository;
 	
@@ -25,9 +26,9 @@ public class ReadingListController {
 		this.readingListRepository = readingListRepository;
 	}
 	
-//	public void setAssociateId(String associateId) {
-//		this.associateId = associateId;
-//	}
+	public void setAssociateId(String associateId) {
+		this.associateId = associateId;
+	}
 	
 	@RequestMapping(value="/{reader}",method=RequestMethod.GET)
 	public String readersBooks(@PathVariable("reader") String reader,Model model) {
